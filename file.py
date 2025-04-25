@@ -3,18 +3,24 @@ class Convertor:
         self.content = content
         
     def str_to_ls(self):
-        self.content = self.content.split()
+        self.content = self.content.split("\n") 
     
     def ls_to_str(self):
-        self.content = " ".join(self.content)
+        self.content = "\n".join(self.content)
         
     def __str__(self):
         return f"this is the current state of your file {self.content}"
         
+if __name__ == "__main__":
 
-file = Convertor("hi my name is") # -> Creates a File Convertor obj
-file.str_to_ls() # -> applies the split method to the str that I passed in and updates the object's self.str property 
-print(file) # -> prints the current state of my file 
+    x = "hi my name is. \n I am 23."
+    print(x)
+    file = Convertor(x) # -> Creates a File Convertor obj
+    file.str_to_ls()
+    print(file)
+    file.ls_to_str()
+    print(file)
 
 
 
+# move the testing to a set of unit tests

@@ -13,8 +13,3 @@ class Delete:
         z = "".join(y) # -> "h"
         self.file[self.cur[0]] = z
         
-
-# d = Delete("hi",2) 
-# help(d.delete)
-
-# 

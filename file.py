@@ -1,28 +1,54 @@
-class Convertor:
+class File: 
+    
+    "represents our text file's state and allows for manipulations on it"
     
     _DELIMITER = "\n"
     
-    def __init__(self, content):
+    def __init__(self, content, cur_pos=0, char=""):
         self.content = content
+        self.cur_pos = cur_pos
+        self.char = char
         
     def str_to_ls(self):
         self.content = self.content.split(self._DELIMITER) 
     
     def ls_to_str(self):
-        self.content = f"${self._DELIMITER}".join(self.content)
+        self.content = f"{self._DELIMITER}".join(self.content)
         
     def __str__(self):
-        return f"this is the current state of your file {self.content}"
+        return f"this is the current state of your file: {self.content}"
+    
+    def delete(self):
+        """ find the position of the cur(n) and delete the char at (n-1)
+        """
+        line_str = self.content[self.cur_pos[0]] #-> "hi"
+        line_ls = list(line_str)
+        line_ls.pop(self.cur_pos[1]-1) #-> ["h"]
+        new_line_str = "".join(line_ls) # -> "h"
+        self.content[self.cur_pos[0]] = new_line_str
         
-if __name__ == "__main__":
+    def insert(self): # decided aginst handling tracking the cursor repositioning here and will handle in cursor management
+        """"" find the position of the cursor(n), move the cursor to the right one index, insert the char at the(n-1) position
+        """
+        line_str = self.content[self.cur_pos[0]] #-> "hi"
+        line_ls = list(line_str)
+        line_ls.insert(self.cur_pos[1], self.char) 
+        z = "".join(line_ls) # -> "h"
+        self.content[self.cur_pos[0]] = z
 
+        
+def main():
     x = "Hi my name is Michael Konu.\nI am 23."
     print(x)
-    file = Convertor(x) # -> Creates a File Convertor obj
-    file.str_to_ls()
-    print(file)
-    file.ls_to_str()
-    print(file)
+    fl = File(x) # -> Creates a File Convertor obj
+    fl.str_to_ls()
+    print(fl)
+    fl.ls_to_str()
+    print(fl) 
+
+if __name__ == "__main__":
+    main()
+    
 
 
 

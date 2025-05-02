@@ -4,10 +4,9 @@ class File:
     
     _DELIMITER = "\n"
     
-    def __init__(self, content, cur_pos=0, char=""):
+    def __init__(self, content,):
         self.content = content
-        self.cur_pos = cur_pos
-        self.char = char
+        
         
     def str_to_ls(self):
         self.content = self.content.split(self._DELIMITER) 
@@ -18,23 +17,23 @@ class File:
     def __str__(self):
         return f"this is the current state of your file: {self.content}"
     
-    def delete(self):
+    def delete(self, cur_pos,):
         """ find the position of the cur(n) and delete the char at (n-1)
         """
-        line_str = self.content[self.cur_pos[0]] #-> "hi"
+        line_str = self.content[cur_pos[0]] #-> "hi"
         line_ls = list(line_str)
-        line_ls.pop(self.cur_pos[1]-1) #-> ["h"]
+        line_ls.pop(cur_pos[1]-1) #-> ["h"]
         new_line_str = "".join(line_ls) # -> "h"
-        self.content[self.cur_pos[0]] = new_line_str
+        self.content[cur_pos[0]] = new_line_str
         
-    def insert(self): # decided aginst handling tracking the cursor repositioning here and will handle in cursor management
+    def insert(self, cur_pos, char=""): # decided aginst handling tracking the cursor repositioning here and will handle in cursor management
         """"" find the position of the cursor(n), move the cursor to the right one index, insert the char at the(n-1) position
         """
-        line_str = self.content[self.cur_pos[0]] #-> "hi"
+        line_str = self.content[cur_pos[0]] #-> "hi"
         line_ls = list(line_str)
-        line_ls.insert(self.cur_pos[1], self.char) 
+        line_ls.insert(cur_pos[1], char) 
         z = "".join(line_ls) # -> "h"
-        self.content[self.cur_pos[0]] = z
+        self.content[cur_pos[0]] = z
 
         
 def main():

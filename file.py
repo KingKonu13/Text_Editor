@@ -1,13 +1,13 @@
 class File: 
     
-    "represents our text file's state and allows for manipulations on it"
-    
     _DELIMITER = "\n"
     
-    def __init__(self, content,):
-        self.content = content
-        
-        
+    def __init__(self, input_content: list):
+        if isinstance(input_content, list):
+            self.content = input_content 
+        else:
+            raise ValueError("please pass in a list type for the content arg")
+
     def str_to_ls(self):
         self.content = self.content.split(self._DELIMITER) 
     
@@ -26,7 +26,7 @@ class File:
         new_line_str = "".join(line_ls) # -> "h"
         self.content[cur_pos[0]] = new_line_str
         
-    def insert(self, cur_pos, char=""): # decided aginst handling tracking the cursor repositioning here and will handle in cursor management
+    def insert(self, cur_pos: tuple, char=""): # decided aginst handling tracking the cursor repositioning here and will handle in cursor management
         """"" find the position of the cursor(n), move the cursor to the right one index, insert the char at the(n-1) position
         """
         line_str = self.content[cur_pos[0]] #-> "hi"
@@ -47,8 +47,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
 
-
-
-# move the testing to a set of unit tests

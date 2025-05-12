@@ -28,23 +28,4 @@ if __name__ == "__main__":
     fl = file.File(["I am 23.”, “I am going to lunch."])
     cur = cursor.Cur((0,2))
     curses.wrapper(main, fl, cur) # -> creates a window obj and calls main with that window obj 
-    fl
-""" 
-def main(stdscr: curses.window):
-    stdscr.addstr('Enter some keys to see what curses returns, Ctrl+c closes')
-    while (True):
-        k = stdscr.getch()
-        # Move to line 2 and clear anything there
-        stdscr.move(1,0)
-        stdscr.deleteln()
-        # Print out known characters
-        if k == curses.KEY_LEFT:
-            stdscr.addstr('Left')
-        elif k == curses.KEY_RIGHT:
-            stdscr.addstr('Right')
-        else:
-            stdscr.addstr(f'Got key {k}')
-        stdscr.addstr("\n")
-        curses.ascii.isprint()
-"""
 

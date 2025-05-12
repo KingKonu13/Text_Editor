@@ -1,4 +1,4 @@
-import file, unittest
+import file, unittest, cursor
 
 class TestFileMethods(unittest.TestCase): #inherit is implementing an is-a relationship: TestFileMethods is a TestCase class with extended behavior
     
@@ -26,3 +26,31 @@ class TestFileMethods(unittest.TestCase): #inherit is implementing an is-a relat
         fl = file.File(x)
         fl.insert((0,2), "o")
         self.assertEqual(fl.content, ['Hio my name is Michael Konu.', 'I am 23.'])
+        
+
+class TestCurMethods(unittest.TestCase):
+    
+    def test_mv_left(self):
+        fl = file.File(['Hi my name is Michael Konu.', 'I am 23.'])
+        cur = cursor.Cur(fl)
+        self.assertEqual(cur.cur_pos, (0,0))
+        cur.mv_left()
+        self.assertEqual(cur.cur_pos, (0,0))
+        cur.cur_pos = (0,3)
+        cur.mv_left()
+        self.assertEqual(cur.cur_pos, (0,2)) 
+        cur.cur_pos = (1,0)  
+        cur.mv_left()
+        self.assertEqual(cur.cur_pos, (0,len(fl.content[0])))
+        cur.cur_pos = (0, len(fl.content[0]))
+        cur.mv_left()
+        self.assertEqual(cur.cur_pos, (0, len(fl.content[0])-1))
+        cur.cur_pos = (1,3)
+        cur.mv_left()
+        self.assertEqual(cur.cur_pos, (1,2))
+        
+        "Ignore your code and think of edge cases your code should handle"     
+        
+        
+    def test_mv_right():
+        pass

@@ -52,5 +52,24 @@ class TestCurMethods(unittest.TestCase):
         "Ignore your code and think of edge cases your code should handle"     
         
         
-    def test_mv_right():
-        pass
+    def test_mv_right(self):
+        fl = file.File(['Hi my name is Michael Konu.', 'I am 23.'])
+        cur = cursor.Cur(fl)
+        self.assertEqual(cur.cur_pos, (0,0))
+        print(cur)
+        cur.mv_right()
+        print(cur)
+        self.assertEqual(cur.cur_pos, (0,1))
+        cur.cur_pos = (0,2)
+        cur.mv_right()
+        self.assertEquals(cur.cur_pos, (0,3))
+        cur.cur_pos = (1,0)
+        cur.mv_right()
+        self.assertEqual(cur.cur_pos, (1,1))
+        cur.cur_pos = (0,len(fl.content[0]))
+        cur.mv_right()
+        print(cur)
+        self.assertEqual(cur.cur_pos, (1,0))
+        cur.cur_pos = (2,8) # not solid 
+        self.assertEqual(cur.cur_pos, (len(fl.content), len(fl.content[cur.cur_pos[0]-1])))
+        return

@@ -1,0 +1,20 @@
+Hi my name is michael  [1,len(line)] (0, upper_bound) upper_bound = len(line)
+Hi my name is marklllllll (2, 23-26)
+
+
+line n(col) - line n+1(col) diff < 0:
+     then wrapping
+else: 
+    no wrapping 
+
+
+
+
+Hi my name is michael
+Hi my name is markllljlllppppppp
+dfuwifgwfguwfuiuwgfuwfuiwuh
+
+if a upper_bound > b upper_bound: then take b's upper_bound 
+
+
+Another hurdle was learning how a text cursor behaves in popular editors. For example, if I press the up arrow key with the cursor in the middle of the document, where will the cursor move? Same column? Not if that line is shorter. Keep pressing up. The cursor will snap back to the original column once a line is long enough. It turns out that the cursor has a memory for the column and tries to get back to it. It is these details that I never noticed until I tried to implement it.

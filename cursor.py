@@ -1,10 +1,10 @@
 import file
 
 class Cur:
-    
+    "add row and column"
     def __init__(self,fl: file.File): 
         self.fl = fl
-        self.cur_pos = (0,0) #line, char) ['Hi my name is Michael.', 'I am 23']
+        self.cur_pos = (0,0) #row, column) ['Hi my name is Michael.', 'I am 23']
 
     def mv_left(self):
         len_line = len(self.fl.content[self.cur_pos[0]])
@@ -30,8 +30,11 @@ class Cur:
             
     
     def mv_right(self):
-        num_lines = len(self.fl.content) 
+        total_rows = len(self.fl.content)
         len_line = len(self.fl.content[self.cur_pos[0]]) # (2,9)
+        
+        if self.cur_pos[0] == total_rows - 1 and self.cur_pos[1] == len_line: #end of doc 
+            return 
         
         if self.cur_pos == (0,0): #start 
             self.cur_pos = (0, self.cur_pos[1]+1)
@@ -45,14 +48,11 @@ class Cur:
             self.cur_pos = (self.cur_pos[0], self.cur_pos[1]+1)
             return 
         
-        elif self.cur_pos[1] == len_line: #end of line 
+        elif self.cur_pos[1] == len_line : #end of line 
             self.cur_pos = (self.cur_pos[0]+1, 0)
             return
-            
-        if self.cur_pos[0] == num_lines and self.cur_pos[1] == len_line: #end of doc 
-            return 
         
-        else:
+        else: # 5 char
             self.cur_pos = (self.cur_pos[0], self.cur_pos[1]+1)
             return
     
@@ -60,9 +60,11 @@ class Cur:
         return f"this is the current cursor position: {self.cur_pos}"
     
     def mv_up(self):
+        len_line = len(self.fl.content[self.cur_pos[0]])
         pass
     
     def mv_down(self):
+        "calculate the current row and then increase it by one and hold the column constant "
         pass
     
 
@@ -71,3 +73,4 @@ class Cur:
 "2. unit tests "
 " end of file problem for mv right" 
 """
+"threshold for wrapping is a 50 char diff btw consecutive lines"

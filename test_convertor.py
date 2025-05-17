@@ -70,6 +70,7 @@ class TestCurMethods(unittest.TestCase):
         cur.mv_right()
         print(cur)
         self.assertEqual(cur.cur_pos, (1,0))
-        cur.cur_pos = (2,8) # not solid 
-        self.assertEqual(cur.cur_pos, (len(fl.content), len(fl.content[cur.cur_pos[0]-1])))
+        cur.cur_pos = (1,8) # not solid (2,9)
+        cur.mv_right()
+        self.assertEqual(cur.cur_pos, (1,8))
         return

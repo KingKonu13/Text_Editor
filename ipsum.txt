@@ -1,6 +1,8 @@
 Hi my name is michael  [1,len(line)] (0, upper_bound) upper_bound = len(line)
 Hi my name is marklllllll (2, 23-26)
 
+1. Hi my name is marklll (2, 23-26)
+2. Hi my name is michael
 
 line n(col) - line n+1(col) diff < 0:
      then wrapping

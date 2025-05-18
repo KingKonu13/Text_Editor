@@ -3,7 +3,7 @@ import file
 class Cur:
     "add row and column"
     def __init__(self,fl: file.File): 
-        self.fl = fl
+        self.fl = fl.file_content
         self.cur_pos = (0,0) #row, column) ['Hi my name is Michael.', 'I am 23']
 
     def mv_left(self):
@@ -60,17 +60,50 @@ class Cur:
         return f"this is the current cursor position: {self.cur_pos}"
     
     def mv_up(self):
-        len_line = len(self.fl.content[self.cur_pos[0]])
-        pass
+        line_one = self.fl[0]
+        len_line_one = len(line_one)
+        line_two = self.fl[1]
+        len_line_two = len(line_two)
+        
+        if len_line_two > len_line_two:
+            self.cur_pos = (self.cur_pos[0] - 1, len_line_one)
+            return
+        
+        if len_line_two < len_line_one:
+            self.cur_pos = (self.cur_pos[0] - 1, len_line_two)
+            return
+        
+        else:
+            self.cur_pos = (self.cur_pos[0] - 1, len_line_one)
+            return
+            
+
     
     def mv_down(self):
-        "calculate the current row and then increase it by one and hold the column constant "
-        pass
+        line_one = self.fl[0]
+        len_line_one = len(line_one)
+        line_two = self.fl[1]
+        len_line_two = len(line_two)
+    
+        if len_line_two > len_line_two:
+                self.cur_pos = (self.cur_pos[0] + 1, len_line_one)
+                return
+        
+        if len_line_two < len_line_one:
+            self.cur_pos = (self.cur_pos[0] + 1, len_line_two)
+            return 
+        
+        else:
+            self.cur_pos = (self.cur_pos[0]+1, len_line_one)
+            return
     
 
 
-"""1. tuples are read only in python""
-"2. unit tests "
-" end of file problem for mv right" 
-"""
-"threshold for wrapping is a 50 char diff btw consecutive lines"
+def main():
+    x =  Cur(file.File(["Hi my name is michael ", "Hi my name is marklllllll"]))
+    print(x.mv_up())
+    
+    
+    
+if __name__ == "__main__":
+    main()

@@ -2,9 +2,9 @@ class File:
     
     _DELIMITER = "\n"
     
-    def __init__(self, input_content: list):
-        if isinstance(input_content, list):
-            self.content = input_content 
+    def __init__(self, file_content: list):
+        if isinstance(file_content, list):
+            self.file_content = file_content 
         else:
             raise ValueError("please pass in a list type for the content arg")
 
@@ -35,16 +35,4 @@ class File:
         z = "".join(line_ls) # -> "h"
         self.content[cur_pos[0]] = z
 
-        
-def main():
-    x = "Hi my name is Michael Konu.\nI am 23."
-    print(x)
-    fl = File(x) # -> Creates a File Convertor obj
-    fl.str_to_ls()
-    print(fl)
-    fl.ls_to_str()
-    print(fl) 
-
-if __name__ == "__main__":
-    main()
 

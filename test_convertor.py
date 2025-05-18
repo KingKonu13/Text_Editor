@@ -48,9 +48,7 @@ class TestCurMethods(unittest.TestCase):
         cur.cur_pos = (1,3)
         cur.mv_left()
         self.assertEqual(cur.cur_pos, (1,2))
-        
-        "Ignore your code and think of edge cases your code should handle"     
-        
+            
         
     def test_mv_right(self):
         fl = file.File(['Hi my name is Michael Konu.', 'I am 23.'])
@@ -74,3 +72,9 @@ class TestCurMethods(unittest.TestCase):
         cur.mv_right()
         self.assertEqual(cur.cur_pos, (1,8))
         return
+    
+    def test_mv_down(self):
+        pass
+    
+    def test_mv_up(self):
+        pass

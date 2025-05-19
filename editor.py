@@ -26,6 +26,8 @@ def main(stdscr: curses.window , fl: file.File, cur: cursor.Cur):
 
 if __name__ == "__main__":
     fl = file.File(["I am 23.”, “I am going to lunch."])
-    cur = cursor.Cur((0,2))
+    cur = cursor.Cur(fl)
     curses.wrapper(main, fl, cur) # -> creates a window obj and calls main with that window obj 
 
+if __name__ == "__main__":
+    main()

@@ -7,7 +7,7 @@ class Cur:
         self.cur_pos = (0,0) #row, column) ['Hi my name is Michael.', 'I am 23']
 
     def mv_left(self):
-        len_line = len(self.fl.content[self.cur_pos[0]])
+        len_line = len(self.fl[self.cur_pos[0]])
         
         if self.cur_pos == (0,0): # start 
             return
@@ -17,7 +17,7 @@ class Cur:
             return
         
         elif self.cur_pos[0] != 0 and self.cur_pos[1] == 0: #not first line, start of line 
-            self.cur_pos = (self.cur_pos[0]-1, len(self.fl.content[self.cur_pos[0]-1]))
+            self.cur_pos = (self.cur_pos[0]-1, len(self.fl[self.cur_pos[0]-1]))
             return
             
         elif self.cur_pos[1] == len_line: #end of line 
@@ -30,8 +30,8 @@ class Cur:
             
     
     def mv_right(self):
-        total_rows = len(self.fl.content)
-        len_line = len(self.fl.content[self.cur_pos[0]]) # (2,9)
+        total_rows = len(self.fl)
+        len_line = len(self.fl[self.cur_pos[0]]) # (2,9)
         
         if self.cur_pos[0] == total_rows - 1 and self.cur_pos[1] == len_line: #end of doc 
             return 
@@ -65,7 +65,7 @@ class Cur:
         line_two = self.fl[1]
         len_line_two = len(line_two)
         
-        if len_line_two > len_line_two:
+        if len_line_two > len_line_one:
             self.cur_pos = (self.cur_pos[0] - 1, len_line_one)
             return
         

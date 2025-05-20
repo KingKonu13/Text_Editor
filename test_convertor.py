@@ -20,7 +20,10 @@ class TestFileMethods(unittest.TestCase): #inherit is implementing an is-a relat
         fl = file.File(x)
         fl.delete((0,2))
         self.assertEqual(fl.file_content, ['H my name is Michael Konu.', 'I am 23.'])
-        
+        fl = file.File(x)
+        fl.delete((0,0))
+        self.assertEqual(fl.file_content, ['Hi my name is Michael Konu.', 'I am 23.'])
+    
     def test_insert(self):
         x = ['Hi my name is Michael Konu.', 'I am 23.']
         fl = file.File(x)

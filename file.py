@@ -1,27 +1,34 @@
+import copy
+
 class File: 
     
     _DELIMITER = "\n"
     
     def __init__(self, file_content: list):
         if isinstance(file_content, list):
-            self.file_content = file_content 
+            self.file_content = copy.deepcopy(file_content) 
         else:
             raise ValueError("please pass in a list type for the content arg")
 
+    def to_str(self):
+        return f"{self._DELIMITER}".join(self.file_content)
+        
     def str_to_ls(self):
         self.file_content = self.file_content.split(self._DELIMITER) 
     
     def ls_to_str(self):
-        self.file_content = f"{self._DELIMITER}".join(self.file_content)
+        self.file_content = self.to_str()
         
     def __str__(self):
-        return f"this is the current state of your file: {self.file_content}"
+        return self.to_str()
     
     def delete(self, cur_pos,):
         """ find the position of the cur(n) and delete the char at (n-1)
         """
         line_str = self.file_content[cur_pos[0]] #-> "hi"
         line_ls = list(line_str)
+        if cur_pos == (0,0):
+            return
         line_ls.pop(cur_pos[1]-1) #-> ["h"]
         new_line_str = "".join(line_ls) # -> "h"
         self.file_content[cur_pos[0]] = new_line_str
